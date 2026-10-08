@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://www.isoloom.com/schema/v1.json
+# OWASP SKF Missing Rate Limiting (OWASP Security Knowledge Framework labs, by Glenn ten Cate, Riccardo ten Cate and the SKF contributors) as an Isoloom spec:
+# a Flask (Python 2) login that accepts unlimited guesses (missing rate limiting, brute force). The SKF lab folder python/ratelimiting is
+# vendored unchanged in app/ and built by its own Dockerfile.
+# `isoloom generate`, then `isoloom run docker`.
+version: 1
+name: skf-ratelimiting
+
+networks:
+  lab: { cidr: 10.60.156.0/24, internet: false }
+
+machines:
+  web:
+    networks: { lab: 10 }
+    services: [{ port: 5000, name: web, http: true, publish: 5050 }]
+    resources: { cpus: 1, memory_mb: 256 }
+    docker:
+      build: app
+
+checks:
+  - name: the lab answers
+    http: http://web:5000/
+    wait: 120
+  - name: a wrong login is refused and can be retried at once
+    script: checks/login.sh
+
+message: |
+  OWASP SKF Missing Rate Limiting answers at http://localhost:{{ machines.web.services.0.publish }}/.
+  The login never slows down or locks.
