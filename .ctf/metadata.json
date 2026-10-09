@@ -4,11 +4,5 @@
   "question": "Brute-force the login form with a wordlist to find the valid credentials (missing rate limiting).",
   "category": "WEB",
   "difficulty": 1,
-  "evidence_kind": "SECRET",
-  "capabilities": [
-    "brute-force",
-    "rate-limiting",
-    "authentication",
-    "wordlists"
-  ]
+  "evidence_kind": "SECRET"
 }
