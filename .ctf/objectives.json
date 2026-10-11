@@ -1,0 +1,34 @@
+{
+  "objectives": [
+    {
+      "key": "main",
+      "title": "Read the flag",
+      "prompt": "Brute-force the login and retrieve the flag (/ctf/flag).",
+      "check": {
+        "evidence": "SECRET",
+        "format": "FLAG{%s}"
+      },
+      "dev": "FLAG{dev-skf-ratelimiting}",
+      "hints": [
+        "Nothing slows down or locks repeated failed logins.",
+        "Read about credential brute force and rate limiting controls."
+      ],
+      "steps": [
+        {
+          "key": "class",
+          "title": "Name the weakness",
+          "prompt": "What is missing in front of the credential check?",
+          "check": {
+            "answer": [
+              "rate limiting",
+              "rate limit",
+              "ratelimiting",
+              "lockout",
+              "account lockout"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
