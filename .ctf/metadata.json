@@ -1,8 +1,11 @@
 {
+  "project_name": "cyberlabs-skf-ratelimiting",
+  "slug": "skf-ratelimiting",
   "title": "OWASP SKF Missing Rate Limiting",
   "description": "A Python 2 Flask login form with no rate limiting, lockout or captcha in front of the credential check.",
-  "question": "Brute-force the login form with a wordlist to find the valid credentials (missing rate limiting). The flag is in /ctf/flag.",
-  "category": "WEB",
+  "category": "web",
   "difficulty": 1,
-  "evidence_kind": "SECRET"
+  "evidence_kind": "SECRET",
+  "capabilities": [],
+  "question": "Brute-force the login form with a wordlist to find the valid credentials (missing rate limiting). The flag is in /ctf/flag."
 }
